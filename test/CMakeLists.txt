@@ -26,6 +26,6 @@ target_include_directories(test_executor
             ${PROJECT_SOURCE_DIR}/src 
             "/usr/local/include")
 
-target_link_libraries(test_executor PRIVATE executor gtest gtest_main)
+target_link_libraries(test_executor PRIVATE executor cctest cctest_main)
 
 target_compile_definitions(test_executor PRIVATE CUSTOMER_LOG)

@@ -1,22 +1,19 @@
-#include <gtest/gtest.h>
+#include <cctest/cctest.h>
 #include "executor/executor.h"
 #include "mcl/log.h"
 
-struct ExecutorTest : testing::Test
-{
-protected:
-	void SetUp() override {
+FIXTURE(ExecutorTest) {
+	BEFORE {
 		MCL_INFO("TEST SETUP");
 	}
 
-	void TearDown() override {
+	AFTER{
 		MCL_INFO("TEST TEARDOWN");
 	}
-};
 
-TEST_F(ExecutorTest, should_get_executor_name)
-{
-	MCL_DBG("TEST RUNING...");
-	ASSERT_STREQ("executor", executor_get_name());
-	MCL_SUCC("TEST SUCCESS!");
-}
+	TEST("should get executor name") {
+		MCL_DBG("TEST RUNING...");
+		ASSERT_EQ("executor", executor_get_name());
+		MCL_SUCC("TEST SUCCESS!");
+	}
+};
