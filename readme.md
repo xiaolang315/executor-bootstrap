@@ -2,14 +2,14 @@
 
 The starting sample project for robot executor of design bootcamp.
 
-- download and install [googletest](https://github.com/google/googletest);
+- install [cctest](https://github.com/ccup/cctest);
 
 ```sh
-$ git clone git@github.com:google/googletest.git
-$ cd googletest/googletest
+$ git clone git@github.com:ccup/cctest.git
+$ cd cctest
 $ mkdir build
 $ cd build
-$ cmake ..
+$ cmake .. 
 $ make
 $ sudo make install
 ```
