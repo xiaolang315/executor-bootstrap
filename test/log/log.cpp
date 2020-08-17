@@ -1,5 +1,7 @@
 #include "mcl/log_levels.h"
 #include <iostream>
+#include <string.h>
+#include <stdarg.h>
 
 namespace{
 	struct ConsoleState
