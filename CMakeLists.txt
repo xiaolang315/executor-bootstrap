@@ -23,6 +23,7 @@ option(ENABLE_TEST_COVERAGE "Enable test coverage" OFF)
 # ---- Using CPM to add dependencies for project ----
 
 include(${PROJECT_SOURCE_DIR}/cmake/CPM.cmake)
+# CPMUsePackageLock(package-lock.cmake)
 
 # ---- Add source folder for project ----
 
