@@ -5,7 +5,7 @@ target="build"
 echo "*******************************************************************************"
 echo "start to build project ..."
 
-cmake -H. -B$target -DENABLE_TEST=on
+cmake -H. -B$target -DENABLE_TEST=on -DCPM_SOURCE_CACHE=./deps
 cmake --build $target
 
 if [ $? -ne 0 ]; then
@@ -17,7 +17,7 @@ fi
 echo "*******************************************************************************"
 echo "start to run tests..."
 
-./$target/test/test_executor
+./$target/test/executor_test
 
 if [ $? -ne 0 ]; then
     echo "FAILED!"

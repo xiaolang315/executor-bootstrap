@@ -1,4 +1,5 @@
-deps/mcl/log_customized_config.h
+deps/mcl/*
+deps/cctest/*
 build/
 .settings/
 .DS_Store
