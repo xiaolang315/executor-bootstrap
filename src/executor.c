@@ -1,5 +1,5 @@
 #include "executor/executor.h"
 
-const char* executor_get_name() {
-	return "executor";
+int executor_get_id() {
+	return 1;
 }

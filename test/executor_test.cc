@@ -13,7 +13,7 @@ FIXTURE(ExecutorTest) {
 
 	TEST("should get executor name") {
 		MCL_DBG("TEST RUNING...");
-		ASSERT_EQ("executor", executor_get_name());
+		ASSERT_EQ(1, executor_get_id());
 		MCL_SUCC("TEST SUCCESS!");
 	}
 };
