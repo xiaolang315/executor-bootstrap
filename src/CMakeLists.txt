@@ -36,9 +36,11 @@ target_include_directories(${PROJECT_NAME}
     PUBLIC ${PROJECT_SOURCE_DIR}/include
 )
 
+target_compile_definitions(${PROJECT_NAME} PRIVATE CUSTOMER_LOG)
+
 # ---- Add executable target ----
 
-if (EXECUTABLE AND NOT ENABLE_TEST)
+if (EXECUTABLE)
   set(EXEC_TARGET ${PROJECT_NAME}_service)
   add_executable(${EXEC_TARGET} ${MAIN_FILE})
   target_link_libraries(${EXEC_TARGET} PRIVATE ${PROJECT_NAME})
