@@ -13,12 +13,12 @@ Usage: ./ccup.sh [OPTIONS]
 
 Options:
     -e, Prepare environment
-    -u, Update code and depends
+    -u, Update deps and cmake generation
     -b, Build project
     -r, Run executable
     -t, Execute testing
     -c, Clean the build
-    -C, Clean the build and depends
+    -C, Clean the build and deps
     -h, The usage of ccup
 EOF
 }
