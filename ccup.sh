@@ -26,7 +26,6 @@ EOF
 function env() {
     docker pull $docker_image
     work_path=$(cd `dirname $0`;pwd)
-    echo $work_path
     docker run -it -v $work_path:/$project --user $(id -u):$(id -g) -w /$project $docker_image /bin/bash
 }
 
