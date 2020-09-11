@@ -1,13 +1,14 @@
 #!/bin/bash
 
-target="build"
+build="build"
+project="executor"
 
 echo "*******************************************************************************"
 echo "start to build project ..."
 
-cmake -H. -B$target -DENABLE_TEST=on -DCPM_SOURCE_CACHE=./deps
-# cmake --build $target --target cpm-update-package-lock
-cmake --build $target
+cmake -H. -B$build -DENABLE_TEST=on -DCPM_SOURCE_CACHE=./deps
+# cmake --build $build --target cpm-update-package-lock
+cmake --build $build
 
 if [ $? -ne 0 ]; then
     echo "FAILED!"
@@ -18,7 +19,7 @@ fi
 echo "*******************************************************************************"
 echo "start to run tests..."
 
-./$target/test/executor_test
+./$build/test/${project}_test
 
 if [ $? -ne 0 ]; then
     echo "FAILED!"

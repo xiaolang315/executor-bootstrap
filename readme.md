@@ -2,22 +2,16 @@
 
 The starting sample project for robot executor of design bootcamp.
 
-- install [cctest](https://github.com/ccup/cctest);
-
-```sh
-$ git clone git@github.com:ccup/cctest.git
-$ cd cctest
-$ mkdir build
-$ cd build
-$ cmake .. 
-$ make
-$ sudo make install
-```
-
-- download and test [executor bootstrap](https://github.com/enjoycool/executor-bootstrap)
+- download & build & test [executor bootstrap](https://github.com/enjoycool/executor-bootstrap)
 
 ```sh
 $ git clone git@github.com:enjoycool/executor-bootstrap.git
 $ cd executor-bootstrap
-$ ./build.sh
+$ chmod a+x ./ccup.sh
+$ ./ccup.sh -bt
+```
+
+- usage
+
+```sh
 ```
