@@ -1,17 +1,46 @@
 ## executor-bootstrap
 
-The starting sample project for robot executor of design bootcamp.
+The bootstrap c/c++ project of design bootcamp.
 
-- download & build & test [executor bootstrap](https://github.com/enjoycool/executor-bootstrap)
+- setup
 
 ```sh
 $ git clone git@github.com:enjoycool/executor-bootstrap.git
 $ cd executor-bootstrap
 $ chmod a+x ./ccup.sh
-$ ./ccup.sh -bt
+$ ./ccup.sh -ubt
 ```
 
 - usage
 
 ```sh
+# start project from docker env
+./ccup.sh -e
+
+# update depends
+./ccup.sh -u
+
+# build
+./ccup.sh -b
+
+# update & build
+./ccup.sh -ub
+
+# run executable
+./ccup.sh -r
+
+# run tests
+./ccup.sh -t
+
+# clean build
+./ccup.sh -c
+
+# clean all
+./ccup.sh -C
+
+# build & test
+./ccup.sh -bt
+
+# help
+./ccup.sh -h
 ```

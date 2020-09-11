@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-# export CCUP_CMD=$(cd "$(dirname "$0")"; pwd)
+export CCUP_CMD=$(cd "$(dirname "$0")"; pwd)
 
 project="executor"
 build="build"
-docker_image="docker-hub.tools.huawei.com/bmc_dev/bmc_dev:v4"
+docker_image="magicbowen/ubuntu-cc-dev:v1"
 deps_cache="./deps"
 
 function help() {
     cat<<-EOF
-Usage: ccup [OPTIONS]
+Usage: ./ccup.sh [OPTIONS]
 
 Options:
     -e, Prepare environment
@@ -25,56 +25,63 @@ EOF
 
 function env() {
     docker pull $docker_image
-    work_path=$(dirname $(readlink -f $0))
+    work_path=$(cd `dirname $0`;pwd)
     echo $work_path
-    docker run -it $work_path:/$project --user $(id -u):$(id -g) -w /$project $docker_image /bin/bash
+    docker run -it -v $work_path:/$project --user $(id -u):$(id -g) -w /$project $docker_image /bin/bash
 }
 
 function update() {
-    echo "---------------------------------------"
-    echo "Start to update project ${project}"
-    git pull
-    echo "---------------------------------------"
+    echo "Start to update ${project}"
+    echo "============================"
+    export GIT_SSL_NO_VERIFY=1
+    cmake -H. -B$build -DENABLE_TEST=on -DCPM_SOURCE_CACHE=$deps_cache
+    echo "============================"
     echo "SUCCESS!"
 }
 
 function build() {
-    export GIT_SSL_NO_VERIFY=1
-
-    cmake -H. -B$build -DENABLE_TEST=on -DCPM_SOURCE_CACHE=$deps_cache
+    echo "Start to build ${project}"
+    echo "============================"
     cmake --build $build
 
-    if [$? -ne 0]; then
+    if [ $? -ne 0 ]; then
         echo "FAILED!"
         exit 1
     fi
+    echo "============================"
+    echo "SUCCESS!"
 }
 
 function run() {
     ./$build/src/${project}_service
-
-    if [$? -ne 0]; then
-        echo "FAILED!"
-        exit 1
-    fi    
 }
 
 function test() {
+    echo "Start to test ${project}"
+    echo "============================"
     ./$build/test/${project}_test
 
-    if [$? -ne 0]; then
+    if [ $? -ne 0 ]; then
         echo "FAILED!"
         exit 1
-    fi   
+    fi 
+    echo "============================"
+    echo "SUCCESS!" 
 }
 
 function clean() {
+    echo "Start to clean ${project}"
+    echo "============================"
     rm -rf build/*
+    echo "SUCCESS!" 
 }
 
 function clean_all() {
+    echo "Start to clean all ${project}"
+    echo "============================"
     rm -rf build/*
     rm -rf deps/*
+    echo "SUCCESS!" 
 }
 
 function parse_args() {
